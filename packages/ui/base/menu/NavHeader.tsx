@@ -28,9 +28,9 @@ interface NavButtonItemProps {
 
 export function ButtonItem({ name, imgSrc, action }: NavButtonItemProps) {
     return (
-        <button onClick={action} className="flex items-center gap-2">
+        <button onClick={action} className="flex items-center gap-2 ">
             <img src={imgSrc} alt={name} className="w-6 h-6" />
-            <span>{name}</span>
+            <span >{name}</span>
         </button>
     );
 }
@@ -39,7 +39,7 @@ export function NavHeader({ navList, children }: NavListProps) {
     const pathname = usePathname();
 
     return (
-        <nav className='flex gap-8'>
+        <nav className='flex  gap-8'>
             {navList.map((link, idx) => (
                 <Link href={link.path} key={idx}
                     className={`${link.path === pathname ? "text-white border-b-2 border-white" : "text-light"} capitalize font-medium hover:text-strong transition-all`}>

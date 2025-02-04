@@ -1,24 +1,16 @@
-// packages/ui/tailwind.config.js
-const baseConfig = require('config/tailwind.config');
+import sharedConfig from "@config/tailwind-config/tailwind.config";
+import type { Config } from "tailwindcss";
 
-module.exports = {
-    ...baseConfig, // 기본 설정 확장
+const config: Pick<Config, "prefix" | "presets" | "content"> = {
     content: [
-        '/**/*.{ts,tsx}',
-		 '!**/node_modules/**', 
+		"./shadcn/**/*.tsx",
+        "./layout/**/*.tsx",
+		"./section/**/*.tsx",
+        "./menu/**/*.tsx"
+    ],
+    presets: [sharedConfig],
+} satisfies Config
 
-    ],
-    theme: {
-        ...baseConfig.theme,
-        extend: {
-            ...baseConfig.theme?.extend,
-            colors: {
-                secondary: '#ffed4a', // UI 패키지에서만 사용할 색상
-            },
-        },
-    },
-    plugins: [
-        ...baseConfig.plugins,
-        require('tailwindcss-animate'), // UI 패키지에서만 사용할 플러그인
-    ],
-};
+export default config;
+
+

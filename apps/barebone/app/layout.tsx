@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {NavHeader} from "@ui/base/menu/NavHeader";
+
 import {navList} from '../src/domain/NavList.json';
 import WrapperMaxWidth from "@ui/base/layout/WrapperMaxWidth";
+import { NavHeader } from "@ui/base/menu/NavHeader";
 
 
 export const metadata: Metadata = {

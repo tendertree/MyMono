@@ -1,23 +1,13 @@
-const baseConfig = require("@config/tailwind-config/basic")
+// tailwind config is required for editor support
 
+import type { Config } from "tailwindcss";
+import sharedConfig from "@config/tailwind-config/tailwind.config";
 
-module.exports = {
-    ...baseConfig, // 기본 설정 확장
-    content: [
-        './app/**/*.{ts,tsx,astro,md,mdx}',
-        './src/**/*.{ts,tsx,astro,md,mdx}',
+const config: Pick<Config, "content" | "presets"> = {
+  presets: [sharedConfig],
 
-    ],
-    theme: {
-        ...baseConfig.theme,
-        extend: {
-            ...baseConfig.theme?.extend,
-            colors: {
-                primary: '#ff0000', // app에서 primary 색상 재정의
-            },
-        },
-    },
-    plugins: [
-        ...baseConfig.plugins,
-    ],
 };
+
+export default config;
+
+

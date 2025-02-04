@@ -6,24 +6,23 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@tailwindcss/typography": "^0.5.15",
+		"@tailwindcss/typography": "^0.5.16",
 		"autoprefixer": "^10.4.20",
-		"postcss": "^8.4.41",
-		"tailwindcss": "^3.4.10"
+		"postcss": "^8.5.1",
+		"tailwindcss": "^3.4.17",
+		"@config/typescript-config": "workspace:*"
 	},
 	"dependencies": {
-		"@types/node": "^22.2.0",
-		"class-variance-authority": "^0.7.0",
+		"@types/node": "^22.13.1",
+		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
-		"tailwind-merge": "^2.5.2",
+		"tailwind-merge": "^3.0.1",
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"files": [
 		"style/basic.css"
 	],
 	"exports": {
-		"./constants": "./src/constants/index.ts",
-		"./style/*": "./style/*",
-		"./basic": "./basic.ts"
+		"./tailwind.config": "./tailwind.config.ts"
 	}
 }
