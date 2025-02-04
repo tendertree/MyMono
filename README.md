@@ -1,0 +1,2 @@
+# MyMono
+My Personal Monorepo
