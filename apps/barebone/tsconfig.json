@@ -1,0 +1,36 @@
+{
+	"extends": "@config/typescript-config/nextjs.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"@src/*": [
+				"src/*"
+			],
+			"@config/tailwind-config/*": [
+				"../../packages/config/tailwind-config/*"
+			],
+			"@ui/base/*": [
+				"../../packages/ui/base/*"
+			]
+		}
+	},
+	"include": [
+		"next-env.d.ts",
+		"next.config.mjs",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

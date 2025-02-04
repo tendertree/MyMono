@@ -1,0 +1,6 @@
+# UI 
+This package contains shared UI components for the monorepo architecture.
+
+# Todo
+
+ Remove Next.js dependencies to make the package framework-independent
