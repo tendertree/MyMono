@@ -8,6 +8,7 @@
 	},
 	"exports": {
 		"./feature/*": "./feature/*",
+		"./provider/*": "./provider/*",
 		"./form/*": "./form/*",
 		"./layout/*": "./layout/*",
 		"./lib/*": "./lib/*",

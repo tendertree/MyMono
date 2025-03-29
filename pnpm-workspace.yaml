@@ -1,5 +1,8 @@
 packages:
-  - "apps/*"
+  - "apps/mobile/*"
+  - "apps/template/*"
+  - "apps/web/*"
+  - "apps/desktop/*"
   - "labs/*"
   - "packages/*"
   - "packages/ai/*"

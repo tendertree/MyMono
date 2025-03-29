@@ -1,0 +1,24 @@
+{
+	"navList": [
+		{
+			"name": "home",
+			"path": "/"
+		},
+		{
+			"name": "about",
+			"path": "/about"
+		},
+		{
+			"name": "blog",
+			"path": "/blog"
+		},
+		{
+			"name": "study",
+			"path": "/study"
+		},
+		{
+			"name": "work",
+			"path": "/work"
+		}
+	]
+}

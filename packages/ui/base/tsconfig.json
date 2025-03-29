@@ -34,6 +34,7 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
+		"provider/**/*",
 		"feature/**/*",
 		"form/**/*",
 		"layout/**/*",

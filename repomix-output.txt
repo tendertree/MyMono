@@ -1,0 +1,1599 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+apps/
+  barebone_next/
+    app/
+      globals.css
+      layout.tsx
+      page.tsx
+    public/
+      file.svg
+      globe.svg
+      next.svg
+      vercel.svg
+      window.svg
+    src/
+      domain/
+        NavList.json
+    .gitignore
+    eslint.config.mjs
+    next.config.ts
+    package.json
+    postcss.config.mjs
+    README.md
+    tailwind.config.ts
+    tsconfig.json
+packages/
+  config/
+    eslint-config/
+      base.js
+      next.js
+      package.json
+      react-internal.js
+      README.md
+    tailwind-config/
+      package.json
+      tailwind.config.ts
+      tsconfig.json
+    typescript-config/
+      base.json
+      nextjs.json
+      package.json
+      react-library.json
+  ui/
+    base/
+      feature/
+        ToggleTheme.tsx
+      lib/
+        provider-theme.tsx
+        style.css
+        utils.ts
+      menu/
+        NavHeader.tsx
+      provider/
+        MaxWidthWrapper.tsx
+      section/
+        feature.tsx
+      shadcn/
+        button.tsx
+        card.tsx
+        sheet.tsx
+      components.json
+      package.json
+      postcss.config.mjs
+      Readme.md 
+      style.css
+      tailwind.config.ts
+      tsconfig.json
+.gitignore
+package.json
+pnpm-workspace.yaml
+README.md
+turbo.json
+
+================================================================
+Files
+================================================================
+
+================
+File: apps/barebone_next/app/globals.css
+================
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root {
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+================
+File: apps/barebone_next/app/layout.tsx
+================
+import type { Metadata } from "next";
+import "./globals.css";
+
+import { navList } from '../src/domain/NavList.json';
+import MaxWidthWrapper from "@ui/base/provider/MaxWidthWrapper";
+import { NavHeader } from "@ui/base/menu/NavHeader";
+import {ThemeProvider} from "@ui/base/feature/ToggleTheme";
+export const metadata: Metadata = {
+    title: "Monorepo barebone",
+    description: "Minimal app setting",
+};
+
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={` antialiased`}
+            >
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <MaxWidthWrapper>
+                        <NavHeader navList={navList} colorActive={"text-red-100"} colorInactive={"text-green-100"} />
+                        <main>
+                            {children}
+                        </main>
+                    </MaxWidthWrapper>
+                </ThemeProvider>
+            </body>
+        </html>
+    );
+}
+
+================
+File: apps/barebone_next/app/page.tsx
+================
+import ToggleTheme from "@ui/base/feature/ToggleTheme";
+import Feature from "@ui/base/section/feature";
+
+export default function Home() {
+    return (
+        <div className="">
+            <h1 className="bg-red-100 text-3xl">hello world</h1>
+            hello this is my homepage!..?..?
+            <p className="bg-blue-100">hemt</p>an did see..!
+            <Feature />
+            hehe..!?
+            <button className="bg-blue-500 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 ...">
+                Save Changes..
+            </button>
+			<ToggleTheme/>
+        </div>)
+
+}
+
+================
+File: apps/barebone_next/public/file.svg
+================
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+
+================
+File: apps/barebone_next/public/globe.svg
+================
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+
+================
+File: apps/barebone_next/public/next.svg
+================
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+
+================
+File: apps/barebone_next/public/vercel.svg
+================
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+
+================
+File: apps/barebone_next/public/window.svg
+================
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+
+================
+File: apps/barebone_next/src/domain/NavList.json
+================
+{
+	"navList": [
+		{
+			"name": "home",
+			"path": "/"
+		},
+		{
+			"name": "about",
+			"path": "/about"
+		},
+		{
+			"name": "blog",
+			"path": "/blog"
+		},
+		{
+			"name": "study",
+			"path": "/study"
+		},
+		{
+			"name": "work",
+			"path": "/work"
+		}
+	]
+}
+
+================
+File: apps/barebone_next/.gitignore
+================
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+================
+File: apps/barebone_next/eslint.config.mjs
+================
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+];
+
+export default eslintConfig;
+
+================
+File: apps/barebone_next/next.config.ts
+================
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+
+================
+File: apps/barebone_next/package.json
+================
+{
+	"name": "barebone_next",
+	"version": "0.1.0",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.0.3",
+		"@tailwindcss/typography": "^0.5.16",
+		"@ui/base": "workspace:*",
+		"next": "15.1.6",
+		"next-themes": "^0.4.4",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
+	},
+	"devDependencies": {
+		"@config/eslint-config": "workspace:*",
+		"@config/tailwind-config": "workspace:*",
+		"@config/typescript-config": "workspace:*",
+		"@eslint/eslintrc": "^3.2.0",
+		"@types/node": "^22.13.1",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
+		"eslint": "^9.19.0",
+		"eslint-config-next": "15.1.6",
+		"postcss": "^8.5.1",
+		"tailwindcss": "^3.4.17",
+		"tailwindcss-animate": "^1.0.7",
+		"typescript": "^5.7.3"
+	},
+	"overrides": {
+		"react-is": "^19.0.0-rc-69d4b800-20241021"
+	}
+}
+
+================
+File: apps/barebone_next/postcss.config.mjs
+================
+/** @type {import('postcss-load-config').Config} */
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+================
+File: apps/barebone_next/README.md
+================
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+================
+File: apps/barebone_next/tailwind.config.ts
+================
+// tailwind config is required for editor support
+
+import type { Config } from "tailwindcss";
+import sharedConfig from "@config/tailwind-config/tailwind.config";
+
+const config: Pick<Config,  "presets"> = {
+    presets: [sharedConfig],
+
+};
+
+export default config;
+
+================
+File: apps/barebone_next/tsconfig.json
+================
+{
+	"extends": "@config/typescript-config/nextjs.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"@src/*": [
+				"src/*"
+			],
+			"@config/tailwind-config/*": [
+				"../../packages/config/tailwind-config/*"
+			],
+			"@ui/base/*": [
+				"../../packages/ui/base/*"
+			]
+		}
+	},
+	"include": [
+		"next-env.d.ts",
+		"next.config.mjs",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
+
+================
+File: packages/config/eslint-config/base.js
+================
+import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
+import turboPlugin from "eslint-plugin-turbo";
+import tseslint from "typescript-eslint";
+import onlyWarn from "eslint-plugin-only-warn";
+
+/**
+ * A shared ESLint configuration for the repository.
+ *
+ * @type {import("eslint").Linter.Config}
+ * */
+export const config = [
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
+  {
+    plugins: {
+      turbo: turboPlugin,
+    },
+    rules: {
+      "turbo/no-undeclared-env-vars": "warn",
+    },
+  },
+  {
+    plugins: {
+      onlyWarn,
+    },
+  },
+  {
+    ignores: ["dist/**"],
+  },
+];
+
+================
+File: packages/config/eslint-config/next.js
+================
+import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
+import pluginReactHooks from "eslint-plugin-react-hooks";
+import pluginReact from "eslint-plugin-react";
+import globals from "globals";
+import pluginNext from "@next/eslint-plugin-next";
+import { config as baseConfig } from "./base.js";
+
+/**
+ * A custom ESLint configuration for libraries that use Next.js.
+ *
+ * @type {import("eslint").Linter.Config}
+ * */
+export const nextJsConfig = [
+  ...baseConfig,
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
+  {
+    ...pluginReact.configs.flat.recommended,
+    languageOptions: {
+      ...pluginReact.configs.flat.recommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+      },
+    },
+  },
+  {
+    plugins: {
+      "@next/next": pluginNext,
+    },
+    rules: {
+      ...pluginNext.configs.recommended.rules,
+      ...pluginNext.configs["core-web-vitals"].rules,
+    },
+  },
+  {
+    plugins: {
+      "react-hooks": pluginReactHooks,
+    },
+    settings: { react: { version: "detect" } },
+    rules: {
+      ...pluginReactHooks.configs.recommended.rules,
+      // React scope no longer necessary with new JSX transform.
+      "react/react-in-jsx-scope": "off",
+    },
+  },
+];
+
+================
+File: packages/config/eslint-config/package.json
+================
+{
+  "name": "@config/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./base.js",
+    "./next-js": "./next.js",
+    "./react-internal": "./react-internal.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@next/eslint-plugin-next": "^15.1.6",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-turbo": "^2.4.0",
+    "globals": "^15.14.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
+  }
+}
+
+================
+File: packages/config/eslint-config/react-internal.js
+================
+import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
+import pluginReactHooks from "eslint-plugin-react-hooks";
+import pluginReact from "eslint-plugin-react";
+import globals from "globals";
+import { config as baseConfig } from "./base.js";
+
+/**
+ * A custom ESLint configuration for libraries that use React.
+ *
+ * @type {import("eslint").Linter.Config} */
+export const config = [
+  ...baseConfig,
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  {
+    languageOptions: {
+      ...pluginReact.configs.flat.recommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+  },
+  {
+    plugins: {
+      "react-hooks": pluginReactHooks,
+    },
+    settings: { react: { version: "detect" } },
+    rules: {
+      ...pluginReactHooks.configs.recommended.rules,
+      // React scope no longer necessary with new JSX transform.
+      "react/react-in-jsx-scope": "off",
+    },
+  },
+];
+
+================
+File: packages/config/eslint-config/README.md
+================
+# `@turbo/eslint-config`
+
+Collection of internal eslint configurations.
+
+================
+File: packages/config/tailwind-config/package.json
+================
+{
+	"name": "@config/tailwind-config",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.16",
+		"autoprefixer": "^10.4.20",
+		"postcss": "^8.5.1",
+		"tailwindcss": "^3.4.17",
+		"@config/typescript-config": "workspace:*"
+	},
+	"dependencies": {
+		"@types/node": "^22.13.1",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"tailwind-merge": "^3.0.1",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"files": [
+		"style/basic.css"
+	],
+	"exports": {
+		"./tailwind.config": "./tailwind.config.ts"
+	}
+}
+
+================
+File: packages/config/tailwind-config/tailwind.config.ts
+================
+import type { Config } from "tailwindcss";
+
+// We want each package to be responsible for its own content.
+const config: Omit<Config, "content"> = {
+	 content: [
+        '../../packages/ui/base/**/*.{ts,tsx}',
+        '../../packages/ui/base/utils.ts',
+		"./app/**/*.tsx",
+		"./src/**/*.tsx",
+	],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "glow-conic":
+          "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+
+================
+File: packages/config/tailwind-config/tsconfig.json
+================
+{
+  "extends": "@config/typescript-config/base.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}
+
+================
+File: packages/config/typescript-config/base.json
+================
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "incremental": false,
+    "isolatedModules": true,
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
+    "moduleDetection": "force",
+    "moduleResolution": "NodeNext",
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022"
+  }
+}
+
+================
+File: packages/config/typescript-config/nextjs.json
+================
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "next" }],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "jsx": "preserve",
+    "noEmit": true
+  }
+}
+
+================
+File: packages/config/typescript-config/package.json
+================
+{
+  "name": "@config/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
+
+================
+File: packages/config/typescript-config/react-library.json
+================
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}
+
+================
+File: packages/ui/base/feature/ToggleTheme.tsx
+================
+"use client"
+
+import * as React from "react"
+import { Sun, Moon } from 'lucide-react'
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+import { Button } from "../shadcn/button"
+
+
+export default function ToggleTheme() {
+    const { theme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'dark' ? 'light' : 'dark'
+        setTheme(newTheme)
+    }
+
+    if (!mounted) {
+        return null
+    }
+
+    return (
+       <Button variant="outline" size="icon" onClick={toggleTheme} className="">
+            {theme == "dark" ?
+                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all " /> :
+                <Moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all " />
+            }
+        </Button>
+    )
+}
+
+
+
+
+
+export function ThemeProvider({ children, ...props }:any) {
+    return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+
+================
+File: packages/ui/base/lib/provider-theme.tsx
+================
+"use client"
+
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+
+================
+File: packages/ui/base/lib/style.css
+================
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+================
+File: packages/ui/base/lib/utils.ts
+================
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+================
+File: packages/ui/base/menu/NavHeader.tsx
+================
+"use client"
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation';
+
+//Nav Item Link Example
+// const links = [
+//     {
+//         name: "Home",
+//         path: "/"
+//     },
+//
+interface link {
+    name: string;
+    path: string;
+}
+
+interface NavListProps {
+    navList: { name: string; path: string }[];
+    children?: React.ReactNode;
+	colorActive:string;
+	colorInactive:string;
+}
+
+interface NavButtonItemProps {
+    name: string;
+    imgSrc: string;
+    action: () => void;
+}
+
+export function ButtonItem({ name, imgSrc, action }: NavButtonItemProps) {
+    return (
+        <button onClick={action} className="flex items-center gap-2 ">
+            <img src={imgSrc} alt={name} className="w-6 h-6" />
+            <span >{name}</span>
+        </button>
+    );
+}
+
+export function NavHeader({ navList, children, colorActive="text-blue-100",colorInactive="text-gray-100" }: NavListProps) {
+    const pathname = usePathname();
+
+    return (
+        <nav className='flex  gap-8'>
+            {navList.map((link, idx) => (
+                <Link href={link.path} key={idx}
+                    className={`${link.path === pathname 
+? `${colorActive} border-b-2 border-white` : colorInactive} capitalize font-medium hover:text-strong transition-all`}>
+                    {link.name}
+                </Link>
+            ))}
+            {children && <div className="ml-auto">{children}</div>}
+        </nav>
+    );
+}
+
+//when scroll down, Nav menu disappear
+export function NavHideWhenScrollDown({ navList }: NavListProps) {
+    const [NavBg, setNavBg] = useState(true);
+    useEffect(() => {
+        const handler = () => {
+            if (window.scrollY > 90) {
+                setNavBg(true);
+            } else {
+                setNavBg(false);
+            }
+        };
+		window.addEventListener("scroll",handler)
+		return () => {
+			window.removeEventListener("scroll", handler);
+		};	
+
+    })
+
+	return(
+ <div className='fixed ${navBg? "bg-indigo-800":"fixed"}'> content</div>
+	)
+
+}
+
+================
+File: packages/ui/base/provider/MaxWidthWrapper.tsx
+================
+import React from 'react'
+import { cn } from '../lib/utils';
+
+
+interface Props {
+    className?: string;
+    children?: React.ReactNode;
+}
+function MaxWidthWrapper({ className, children }: Props) {
+    return (
+        <div className={cn(' mx-auto max-w-screen-xl w-full my-12 flex flex-col   ', className)}>
+		
+          ....this is wrappe:)
+            {children}
+        </div>
+    )
+}
+
+export default MaxWidthWrapper
+
+================
+File: packages/ui/base/section/feature.tsx
+================
+import React from 'react'
+
+export default function Feature() {
+  return (
+    <div className='bg'>This is Feature page. did you see that?</div>
+  )
+}
+
+================
+File: packages/ui/base/shadcn/button.tsx
+================
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "../lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        icon: "h-9 w-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+
+================
+File: packages/ui/base/shadcn/card.tsx
+================
+import * as React from "react"
+
+import { cn } from "../lib/utils"
+
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-xl border bg-card text-card-foreground shadow",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
+
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
+
+const CardTitle = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("font-semibold leading-none tracking-tight", className)}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
+
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
+
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
+
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+
+================
+File: packages/ui/base/shadcn/sheet.tsx
+================
+"use client"
+
+import * as React from "react"
+import * as SheetPrimitive from "@radix-ui/react-dialog"
+import { cva, type VariantProps } from "class-variance-authority"
+import { X } from "lucide-react"
+
+import { cn } from "../lib/utils"
+
+const Sheet = SheetPrimitive.Root
+
+const SheetTrigger = SheetPrimitive.Trigger
+
+const SheetClose = SheetPrimitive.Close
+
+const SheetPortal = SheetPrimitive.Portal
+
+const SheetOverlay = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Overlay
+    className={cn(
+      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className
+    )}
+    {...props}
+    ref={ref}
+  />
+))
+SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
+
+const sheetVariants = cva(
+  "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
+  {
+    variants: {
+      side: {
+        top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+        bottom:
+          "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+        right:
+          "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+      },
+    },
+    defaultVariants: {
+      side: "right",
+    },
+  }
+)
+
+interface SheetContentProps
+  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
+    VariantProps<typeof sheetVariants> {}
+
+const SheetContent = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Content>,
+  SheetContentProps
+>(({ side = "right", className, children, ...props }, ref) => (
+  <SheetPortal>
+    <SheetOverlay />
+    <SheetPrimitive.Content
+      ref={ref}
+      className={cn(sheetVariants({ side }), className)}
+      {...props}
+    >
+      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+        <X className="h-4 w-4" />
+        <span className="sr-only">Close</span>
+      </SheetPrimitive.Close>
+      {children}
+    </SheetPrimitive.Content>
+  </SheetPortal>
+))
+SheetContent.displayName = SheetPrimitive.Content.displayName
+
+const SheetHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col space-y-2 text-center sm:text-left",
+      className
+    )}
+    {...props}
+  />
+)
+SheetHeader.displayName = "SheetHeader"
+
+const SheetFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      className
+    )}
+    {...props}
+  />
+)
+SheetFooter.displayName = "SheetFooter"
+
+const SheetTitle = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Title
+    ref={ref}
+    className={cn("text-lg font-semibold text-foreground", className)}
+    {...props}
+  />
+))
+SheetTitle.displayName = SheetPrimitive.Title.displayName
+
+const SheetDescription = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Description
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+SheetDescription.displayName = SheetPrimitive.Description.displayName
+
+export {
+  Sheet,
+  SheetPortal,
+  SheetOverlay,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+}
+
+================
+File: packages/ui/base/components.json
+================
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "zinc",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "shadcn",
+    "utils": "@lib/utils",
+    "ui": "shadcn",
+    "lib": "@lib",
+    "hooks": "@hooks"
+  },
+  "iconLibrary": "lucide"
+}
+
+================
+File: packages/ui/base/package.json
+================
+{
+	"name": "@ui/base",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"generate:component": "turbo gen shadcn-component",
+		"add:ui": "pnpm dlx shadcn@latest add -p ./"
+	},
+	"exports": {
+		"./feature/*": "./feature/*",
+		"./provider/*": "./provider/*",
+		"./form/*": "./form/*",
+		"./layout/*": "./layout/*",
+		"./lib/*": "./lib/*",
+		"./list/*": "./list/*",
+		"./section/*": "./section/*",
+		"./menu/*": "./menu/*",
+		"./shadcn/*": "./shadcn/*",
+		"./styles.css": "./styles.css"
+	},
+	"peerDependencies": {
+		"react": "^19"
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^3.10.0",
+		"@radix-ui/react-alert-dialog": "^1.1.5",
+		"@radix-ui/react-checkbox": "1.1.3",
+		"@radix-ui/react-dialog": "^1.1.5",
+		"@radix-ui/react-dismissable-layer": "^1.1.4",
+		"@radix-ui/react-dropdown-menu": "^2.1.5",
+		"@radix-ui/react-focus-scope": "^1.1.1",
+		"@radix-ui/react-label": "2.1.1",
+		"@radix-ui/react-navigation-menu": "1.2.4",
+		"@radix-ui/react-popover": "^1.1.5",
+		"@radix-ui/react-popper": "^1.2.1",
+		"@radix-ui/react-portal": "^1.1.3",
+		"@radix-ui/react-primitive": "^2.0.1",
+		"@radix-ui/react-scroll-area": "^1.2.2",
+		"@radix-ui/react-select": "2.1.5",
+		"@radix-ui/react-separator": "^1.1.1",
+		"@radix-ui/react-slot": "^1.1.1",
+		"@radix-ui/react-switch": "^1.1.2",
+		"@radix-ui/react-tabs": "^1.1.2",
+		"@radix-ui/react-tooltip": "^1.1.7",
+		"@tailwindcss/postcss": "^4.0.3",
+		"@tanstack/react-table": "^8.20.6",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"cmdk": "1.0.4",
+		"lucide-react": "^0.474.0",
+		"next": "15.1.6",
+		"next-themes": "^0.4.4",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-icons": "^5.4.0",
+		"react-spinner": "^0.2.7",
+		"react-spinners": "^0.15.0",
+		"scrollarea": "^1.0.0",
+		"tailwind-merge": "^3.0.1",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"@config/typescript-config": "workspace:*",
+		"@config/tailwind-config": "workspace:*",
+		"@types/node": "^22.13.1",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
+		"eslint": "^9.19.0",
+		"eslint-config-next": "15.1.6",
+		"postcss": "^8.5.1",
+		"tailwindcss": "^3.4.17",
+		"typescript": "^5.7.3"
+	}
+}
+
+================
+File: packages/ui/base/postcss.config.mjs
+================
+/** @type {import('postcss-load-config').Config} */
+const config = {
+  plugins: {
+        "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+
+================
+File: packages/ui/base/Readme.md 
+================
+# UI 
+This package contains shared UI components for the monorepo architecture.
+
+# Todo
+
+ Remove Next.js dependencies to make the package framework-independent
+
+================
+File: packages/ui/base/style.css
+================
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+================
+File: packages/ui/base/tailwind.config.ts
+================
+import sharedConfig from "@config/tailwind-config/tailwind.config";
+import type { Config } from "tailwindcss";
+
+const config: Pick<Config, "prefix" | "presets" | "content"> = {
+    content: [
+		"./shadcn/**/*.tsx",
+        "./layout/**/*.tsx",
+		"./section/**/*.tsx",
+        "./menu/**/*.tsx"
+    ],
+    presets: [sharedConfig],
+} satisfies Config
+
+export default config;
+
+================
+File: packages/ui/base/tsconfig.json
+================
+{
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"paths": {
+			"@/*": [
+				"./*"
+			]
+		}
+	},
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"provider/**/*",
+		"feature/**/*",
+		"form/**/*",
+		"layout/**/*",
+		"lib/**/*",
+		"list/**/*",
+		"menu/**/*",
+		"new/**/*",
+		"section/**/*",
+		"shadcn/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
+
+================
+File: .gitignore
+================
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Build Outputs
+.next/
+out/
+build
+dist
+
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.DS_Store
+*.pem
+
+================
+File: package.json
+================
+{
+  "name": "myMono",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "turbo": "^2.4.0",
+    "typescript": "5.7.3"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
+}
+
+================
+File: pnpm-workspace.yaml
+================
+packages:
+  - "apps/*"
+  - "labs/*"
+  - "packages/*"
+  - "packages/ai/*"
+  - "packages/config/*"
+  - "packages/infra/*"
+  - "packages/domain/*"
+  - "packages/entity/*"
+  - "packages/ui/*"
+  - "packages/feature/*"
+  - "packages/resource/*"
+
+================
+File: README.md
+================
+# MyMono
+My Personal Monorepo
+
+================
+File: turbo.json
+================
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
+
+
+
+================================================================
+End of Codebase
+================================================================

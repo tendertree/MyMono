@@ -18,6 +18,8 @@ interface link {
 interface NavListProps {
     navList: { name: string; path: string }[];
     children?: React.ReactNode;
+	colorActive:string;
+	colorInactive:string;
 }
 
 interface NavButtonItemProps {
@@ -35,14 +37,15 @@ export function ButtonItem({ name, imgSrc, action }: NavButtonItemProps) {
     );
 }
 
-export function NavHeader({ navList, children }: NavListProps) {
+export function NavHeader({ navList, children, colorActive="text-blue-100",colorInactive="text-gray-100" }: NavListProps) {
     const pathname = usePathname();
 
     return (
         <nav className='flex  gap-8'>
             {navList.map((link, idx) => (
                 <Link href={link.path} key={idx}
-                    className={`${link.path === pathname ? "text-white border-b-2 border-white" : "text-light"} capitalize font-medium hover:text-strong transition-all`}>
+                    className={`${link.path === pathname 
+? `${colorActive} border-b-2 border-white` : colorInactive} capitalize font-medium hover:text-strong transition-all`}>
                     {link.name}
                 </Link>
             ))}
