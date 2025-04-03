@@ -4,7 +4,9 @@
 	"private": true,
 	"scripts": {
 		"generate:component": "turbo gen shadcn-component",
-		"add:ui": "pnpm dlx shadcn@latest add -p ./"
+		"add:ui": "pnpm dlx shadcn@latest add -p ./",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
 	},
 	"exports": {
 		"./feature/*": "./feature/*",
@@ -60,15 +62,31 @@
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
-		"@config/typescript-config": "workspace:*",
+		"@chromatic-com/storybook": "^3",
 		"@config/tailwind-config": "workspace:*",
+		"@config/typescript-config": "workspace:*",
+		"@storybook/addon-essentials": "^8.6.11",
+		"@storybook/addon-interactions": "^8.6.11",
+		"@storybook/addon-onboarding": "^8.6.11",
+		"@storybook/blocks": "^8.6.11",
+		"@storybook/nextjs": "^8.6.11",
+		"@storybook/react": "^8.6.11",
+		"@storybook/test": "^8.6.11",
 		"@types/node": "^22.13.1",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
+		"@eslint/eslintrc": "^3.2.0",
 		"eslint": "^9.19.0",
 		"eslint-config-next": "15.1.6",
+		"eslint-plugin-storybook": "^0.12.0",
 		"postcss": "^8.5.1",
+		"storybook": "^8.6.11",
 		"tailwindcss": "^3.4.17",
 		"typescript": "^5.7.3"
+	},
+	"eslintConfig": {
+		"extends": [
+			"plugin:storybook/recommended"
+		]
 	}
 }
