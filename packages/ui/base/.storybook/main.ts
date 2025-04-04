@@ -25,7 +25,10 @@ const config: StorybookConfig = {
   framework: {
     name: getAbsolutePath('@storybook/nextjs'),
     options: {}
-  }
+  },
+  staticDirs: ['../public'], //이미지 
+
 };
 
 export default config;
+

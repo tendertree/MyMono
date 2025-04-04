@@ -34,6 +34,7 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
+		"icon/**/*",
 		"provider/**/*",
 		"feature/**/*",
 		"form/**/*",
@@ -43,7 +44,9 @@
 		"menu/**/*",
 		"new/**/*",
 		"section/**/*",
-		"shadcn/**/*"
+		"shadcn/**/*",
+		"stories/**/*",
+		".storybook/**/*"
 	],
 	"exclude": [
 		"node_modules"
